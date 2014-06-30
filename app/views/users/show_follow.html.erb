@@ -4,6 +4,7 @@
   <section>
   <%= gravatar_for @user %>
   <h1><%= @user.name %></h1>
+  <h1><%= @user.email%></h1>
   <span><%= link_to "view my profile", @user %></span>
   <span><b>Microposts:</b> <%= @user.microposts.count %></span>
   </section>
@@ -13,6 +14,7 @@
     <div class="user_avatars">
       <% @users.each do |user| %>
         <%= link_to gravatar_for(user), user %>
+
       <% end %>
     </div>
   <% end %>
@@ -22,7 +24,15 @@
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users">
-        <%= render @users %>
+
+        
+
+        <% @users.each do |user| %>
+        <%= render user  %> 
+        <%= user.email %>
+
+      <% end %> 
+
       </ul>
       <%= will_paginate %>
     <% end %>
